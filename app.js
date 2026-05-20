@@ -252,22 +252,22 @@ function renderInicio() {
   return `
     <section class="grid cols-4">
       <article class="card metric">
-        <div class="metric-icon"><i class="fas fa-book-open"></i></div>
+        <div class="metric-icon metric-icon--indigo"><i class="fas fa-book-open"></i></div>
         <h3>${t('inicio.metrics.lessons')}</h3>
         <p>${m.doneLessons}<small>/${m.totalLessons}</small></p>
       </article>
       <article class="card metric">
-        <div class="metric-icon"><i class="fas fa-pen-to-square"></i></div>
+        <div class="metric-icon metric-icon--blue"><i class="fas fa-pen-to-square"></i></div>
         <h3>${t('inicio.metrics.attempts')}</h3>
         <p>${m.attempts}</p>
       </article>
       <article class="card metric">
-        <div class="metric-icon"><i class="fas fa-star"></i></div>
+        <div class="metric-icon metric-icon--amber"><i class="fas fa-star"></i></div>
         <h3>${t('inicio.metrics.avg')}</h3>
         <p>${m.avgScore}<small>%</small></p>
       </article>
       <article class="card metric">
-        <div class="metric-icon"><i class="fas fa-database"></i></div>
+        <div class="metric-icon metric-icon--emerald"><i class="fas fa-database"></i></div>
         <h3>${t('inicio.metrics.questions')}</h3>
         <p>${QUESTION_BANK.length}</p>
       </article>
