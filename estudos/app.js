@@ -1,23 +1,6 @@
 const STORAGE_KEY = "estudos_progress_v1";
 
-// ── Dark mode ────────────────────────────────────
-(function () {
-  const root = document.documentElement;
-  const saved = localStorage.getItem('theme');
-  if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches))
-    root.classList.add('dark');
-
-  function syncIcon() {
-    const icon = document.querySelector('#darkToggle i');
-    if (icon) icon.className = root.classList.contains('dark') ? 'fas fa-sun' : 'fas fa-moon';
-  }
-  syncIcon();
-  document.getElementById('darkToggle').addEventListener('click', () => {
-    root.classList.toggle('dark');
-    localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
-    syncIcon();
-  });
-})();
+// Dark mode é tratado em ../assets/js/main.js (compartilhado com o Guia).
 
 // ── State ────────────────────────────────────────
 const state = {

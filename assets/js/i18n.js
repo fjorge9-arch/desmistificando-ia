@@ -8,7 +8,8 @@
     nav: {
       openToc: "Abrir índice", closeToc: "Fechar índice",
       linkedinAriaLabel: "Perfil do autor no LinkedIn",
-      darkMode: "Alternar modo escuro", indexLabel: "Índice"
+      darkMode: "Alternar modo escuro", indexLabel: "Índice",
+      platformLink: "Plataforma de Estudos", guideLink: "Guia"
     },
     toc: {
       step0: "0. Comece pela sua dor", vocab: "Vocabulário",
@@ -224,7 +225,50 @@
       developedBy: "Desenvolvido por",
       authorLinkedinAriaLabel: "Perfil de Fernando Jorge da Silva no LinkedIn",
       copyright: "© 2026 · Feito por Fernando Jorge da Silva. Compartilhe à vontade."
-    }
+    },
+    // ── Plataforma de Estudos (namespaces sem colisão com o Guia) ──
+    tabs: { inicio:'Início', licoes:'Lições', quiz:'Quiz', simulado:'Simulado', historico:'Histórico' },
+    topbar: { subtitle:'Plataforma de Estudos', reset:'Resetar', home:'Início' },
+    inicio: {
+      metrics: { lessons:'Lições', attempts:'Tentativas', avg:'Média Geral', questions:'Questões' },
+      title: 'Progresso Rápido',
+      noAttempts: 'Nenhuma tentativa ainda. Comece pelo Quiz!',
+      lastAttempt: 'Última tentativa',
+      hint: 'Use <strong>Lições</strong> para estudar por tema e <strong>Quiz / Simulado</strong> para avaliar domínio.'
+    },
+    licoes: {
+      title: 'Catálogo de Lições',
+      search: 'Buscar por título ou resumo',
+      allTopics: 'Todos',
+      markDone: 'Marcar como concluída',
+      alreadyDone: 'Concluída',
+      unmarkDone: 'Desmarcar',
+      source: 'Fonte',
+      noResults: 'Sem resultados para os filtros.',
+      loading: 'Carregando conteúdo…',
+      loadError: 'Não foi possível carregar o conteúdo desta lição.'
+    },
+    session: {
+      question: 'Pergunta', of: 'de',
+      timeLeft: 'Tempo restante',
+      prev: 'Anterior', next: 'Próxima', finish: 'Finalizar',
+      lastResult: 'Último Resultado',
+      retry: 'Tentar Novamente',
+      viewHistory: 'Ver Histórico',
+      timeout: 'Encerrado por tempo.',
+      opportunities: 'Maiores oportunidades',
+      confirmFinish: 'questão(ões) sem resposta. Finalizar mesmo assim?'
+    },
+    quiz:     { title:'Quiz Rápido',  desc:'10 questões aleatórias para verificação rápida de domínio.', start:'Iniciar Quiz' },
+    simulado: { title:'Simulado',     desc:'20 questões, tempo total de 25 minutos.',                   start:'Iniciar Simulado' },
+    historico: {
+      title: 'Histórico de Avaliações',
+      noHistory: 'Sem tentativas registradas ainda.',
+      noHistoryCta: 'Faça seu primeiro quiz para começar!',
+      total: 'Tentativas', avg: 'Média', best: 'Melhor',
+      opportunities: 'Oportunidades'
+    },
+    levels: { ok:'Avançado', warn:'Intermediário', bad:'Fundacional' }
   },
 
   en: {
@@ -236,7 +280,8 @@
     nav: {
       openToc: "Open index", closeToc: "Close index",
       linkedinAriaLabel: "Author profile on LinkedIn",
-      darkMode: "Toggle dark mode", indexLabel: "Index"
+      darkMode: "Toggle dark mode", indexLabel: "Index",
+      platformLink: "Study Platform", guideLink: "Guide"
     },
     toc: {
       step0: "0. Start with your pain", vocab: "Vocabulary",
@@ -452,7 +497,50 @@
       developedBy: "Developed by",
       authorLinkedinAriaLabel: "Fernando Jorge da Silva profile on LinkedIn",
       copyright: "© 2026 · Made by Fernando Jorge da Silva. Feel free to share."
-    }
+    },
+    // ── Plataforma de Estudos ──
+    tabs: { inicio:'Home', licoes:'Lessons', quiz:'Quiz', simulado:'Mock Exam', historico:'History' },
+    topbar: { subtitle:'Study Platform', reset:'Reset', home:'Home' },
+    inicio: {
+      metrics: { lessons:'Lessons', attempts:'Attempts', avg:'Avg Score', questions:'Questions' },
+      title: 'Quick Progress',
+      noAttempts: 'No attempts yet. Start with the Quiz!',
+      lastAttempt: 'Last attempt',
+      hint: 'Use <strong>Lessons</strong> to study by topic and <strong>Quiz / Mock Exam</strong> to assess your knowledge.'
+    },
+    licoes: {
+      title: 'Lessons Catalog',
+      search: 'Search by title or summary',
+      allTopics: 'All',
+      markDone: 'Mark as completed',
+      alreadyDone: 'Completed',
+      unmarkDone: 'Unmark',
+      source: 'Source',
+      noResults: 'No results for the current filters.',
+      loading: 'Loading content…',
+      loadError: 'Could not load the content of this lesson.'
+    },
+    session: {
+      question: 'Question', of: 'of',
+      timeLeft: 'Time left',
+      prev: 'Previous', next: 'Next', finish: 'Finish',
+      lastResult: 'Last Result',
+      retry: 'Try Again',
+      viewHistory: 'View History',
+      timeout: 'Time ran out.',
+      opportunities: 'Top opportunities',
+      confirmFinish: 'question(s) unanswered. Finish anyway?'
+    },
+    quiz:     { title:'Quick Quiz',   desc:'10 random questions for quick knowledge verification.', start:'Start Quiz' },
+    simulado: { title:'Mock Exam',    desc:'20 questions, 25-minute time limit.',                   start:'Start Mock Exam' },
+    historico: {
+      title: 'Assessment History',
+      noHistory: 'No attempts recorded yet.',
+      noHistoryCta: 'Take your first quiz to get started!',
+      total: 'Attempts', avg: 'Average', best: 'Best',
+      opportunities: 'Opportunities'
+    },
+    levels: { ok:'Advanced', warn:'Intermediate', bad:'Foundational' }
   },
 
   es: {
@@ -464,7 +552,8 @@
     nav: {
       openToc: "Abrir indice", closeToc: "Cerrar indice",
       linkedinAriaLabel: "Perfil del autor en LinkedIn",
-      darkMode: "Alternar modo oscuro", indexLabel: "Indice"
+      darkMode: "Alternar modo oscuro", indexLabel: "Indice",
+      platformLink: "Plataforma de Estudios", guideLink: "Guia"
     },
     toc: {
       step0: "0. Empieza por tu dolor", vocab: "Vocabulario",
@@ -680,19 +769,69 @@
       developedBy: "Desarrollado por",
       authorLinkedinAriaLabel: "Perfil de Fernando Jorge da Silva en LinkedIn",
       copyright: "© 2026 · Hecho por Fernando Jorge da Silva. Compartelo libremente."
-    }
+    },
+    // ── Plataforma de Estudios ──
+    tabs: { inicio:'Inicio', licoes:'Lecciones', quiz:'Quiz', simulado:'Simulacro', historico:'Historial' },
+    topbar: { subtitle:'Plataforma de Estudios', reset:'Resetear', home:'Inicio' },
+    inicio: {
+      metrics: { lessons:'Lecciones', attempts:'Intentos', avg:'Promedio', questions:'Preguntas' },
+      title: 'Progreso Rápido',
+      noAttempts: '¡Sin intentos aún. Comienza con el Quiz!',
+      lastAttempt: 'Último intento',
+      hint: 'Usa <strong>Lecciones</strong> para estudiar por tema y <strong>Quiz / Simulacro</strong> para evaluar tu dominio.'
+    },
+    licoes: {
+      title: 'Catálogo de Lecciones',
+      search: 'Buscar por título o resumen',
+      allTopics: 'Todos',
+      markDone: 'Marcar como completada',
+      alreadyDone: 'Completada',
+      unmarkDone: 'Desmarcar',
+      source: 'Fuente',
+      noResults: 'Sin resultados para los filtros.',
+      loading: 'Cargando contenido…',
+      loadError: 'No se pudo cargar el contenido de esta lección.'
+    },
+    session: {
+      question: 'Pregunta', of: 'de',
+      timeLeft: 'Tiempo restante',
+      prev: 'Anterior', next: 'Siguiente', finish: 'Finalizar',
+      lastResult: 'Último Resultado',
+      retry: 'Intentar de nuevo',
+      viewHistory: 'Ver Historial',
+      timeout: 'Tiempo agotado.',
+      opportunities: 'Principales oportunidades',
+      confirmFinish: 'pregunta(s) sin respuesta. ¿Finalizar de todas formas?'
+    },
+    quiz:     { title:'Quiz Rápido',  desc:'10 preguntas aleatorias para verificación rápida de dominio.', start:'Iniciar Quiz' },
+    simulado: { title:'Simulacro',    desc:'20 preguntas, tiempo total de 25 minutos.',                    start:'Iniciar Simulacro' },
+    historico: {
+      title: 'Historial de Evaluaciones',
+      noHistory: 'Sin intentos registrados aún.',
+      noHistoryCta: '¡Realiza tu primer quiz para empezar!',
+      total: 'Intentos', avg: 'Promedio', best: 'Mejor',
+      opportunities: 'Oportunidades'
+    },
+    levels: { ok:'Avanzado', warn:'Intermedio', bad:'Fundacional' }
   }
 };
 
-// ── Engine ────────────────────────────────────────────────────────────────
+// ── Engine unificada (Guia + Plataforma) ─────────────────────────────────
 
 const LANGS = ['pt', 'en', 'es'];
 let currentLang = 'pt';
 
 function t(key) {
-  return key.split('.').reduce((obj, k) => obj?.[k], TRANSLATIONS[currentLang]) ?? key;
+  // Tenta no idioma corrente; faz fallback para PT se ausente.
+  const lookup = (lang) =>
+    key.split('.').reduce((obj, k) => obj?.[k], TRANSLATIONS[lang]);
+  const val = lookup(currentLang);
+  if (val !== undefined) return val;
+  const fb = lookup('pt');
+  return fb !== undefined ? fb : key;
 }
 window.t = t;
+window.getLang = () => currentLang;
 
 function applyTranslations() {
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -707,11 +846,20 @@ function applyTranslations() {
     const val = t(el.dataset.i18nAria);
     if (val !== el.dataset.i18nAria) el.setAttribute('aria-label', val);
   });
-  document.title = t('meta.title');
+  // Title/description só atualizam se a chave existir (Guia tem; Plataforma não).
+  const metaTitle = lookupRaw('meta.title');
+  if (metaTitle !== undefined) document.title = metaTitle;
+  const metaDescVal = lookupRaw('meta.description');
   const metaDesc = document.querySelector('meta[name="description"]');
-  if (metaDesc) metaDesc.setAttribute('content', t('meta.description'));
+  if (metaDesc && metaDescVal !== undefined) metaDesc.setAttribute('content', metaDescVal);
   const localeMap = { pt: 'pt-BR', en: 'en-US', es: 'es-419' };
   document.documentElement.lang = localeMap[currentLang] || 'pt-BR';
+  // Plataforma usa render() para re-renderizar conteúdo dinâmico.
+  if (typeof window.render === 'function') window.render();
+}
+
+function lookupRaw(key) {
+  return key.split('.').reduce((obj, k) => obj?.[k], TRANSLATIONS[currentLang]);
 }
 
 function setLang(lang) {
@@ -723,6 +871,7 @@ function setLang(lang) {
   });
   applyTranslations();
 }
+window.setLang = setLang;
 
 function detectLang() {
   const stored = localStorage.getItem('lang');
