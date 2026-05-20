@@ -234,22 +234,22 @@ function renderInicio() {
 
   return `
     <section class="grid cols-4">
-      <article class="card metric">
+      <article class="card metric" data-view="licoes">
         <div class="metric-icon metric-icon--indigo"><i class="fas fa-book-open"></i></div>
         <h3>${t('inicio.metrics.lessons')}</h3>
         <p>${m.doneLessons}<small>/${m.totalLessons}</small></p>
       </article>
-      <article class="card metric">
+      <article class="card metric" data-view="historico">
         <div class="metric-icon metric-icon--blue"><i class="fas fa-pen-to-square"></i></div>
         <h3>${t('inicio.metrics.attempts')}</h3>
         <p>${m.attempts}</p>
       </article>
-      <article class="card metric">
+      <article class="card metric" data-view="historico">
         <div class="metric-icon metric-icon--amber"><i class="fas fa-star"></i></div>
         <h3>${t('inicio.metrics.avg')}</h3>
         <p>${m.avgScore}<small>%</small></p>
       </article>
-      <article class="card metric">
+      <article class="card metric" data-view="quiz">
         <div class="metric-icon metric-icon--emerald"><i class="fas fa-database"></i></div>
         <h3>${t('inicio.metrics.questions')}</h3>
         <p>${QUESTION_BANK.length}</p>
@@ -553,6 +553,12 @@ function render() {
 
 // ── Event binding ─────────────────────────────────
 function bindViewEvents() {
+  if (state.view === "inicio") {
+    document.querySelectorAll(".metric[data-view]").forEach(card => {
+      card.addEventListener("click", () => setView(card.dataset.view));
+    });
+  }
+
   if (state.view === "licoes") {
     const searchEl = document.getElementById("lessonSearch");
     if (searchEl) {
