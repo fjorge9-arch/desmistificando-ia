@@ -3,7 +3,8 @@
 .gitignore
 .assetsignore
 wrangler.toml
-*.md
+README.md
+/*.md
 bkp/
 docs/
 fusion/
