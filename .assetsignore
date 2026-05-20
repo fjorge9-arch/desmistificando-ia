@@ -1,0 +1,10 @@
+.git/
+.wrangler/
+.gitignore
+.assetsignore
+wrangler.toml
+*.md
+bkp/
+docs/
+fusion/
+C:Temp*
