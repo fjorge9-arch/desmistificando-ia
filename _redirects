@@ -1,0 +1,6 @@
+# Cloudflare Pages — redirects
+# Canonical: apex sem www
+https://www.desmistificando-ia.com/* https://desmistificando-ia.com/:splat 301!
+
+# Estudos sem barra final → com barra (canonical)
+/estudos /estudos/ 301
