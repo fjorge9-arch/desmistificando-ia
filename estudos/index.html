@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plataforma de Estudos — Desmistificando IA</title>
+  <meta name="theme-color" content="#6d28d9" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>" />
+  <!-- Dark mode anti-FOUC: must run before any CSS paints -->
+  <script>
+    (function(){
+      var t=localStorage.getItem('theme');
+      if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches))
+        document.documentElement.classList.add('dark');
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="page-inner topbar-inner">
+      <div class="topbar-brand">
+        <a href="https://desmistificando-ia.com/" class="topbar-brand-main">
+          <i class="fas fa-brain"></i> Desmistificando IA
+        </a>
+        <a href="./" class="topbar-app-label" data-i18n="topbar.subtitle">Plataforma de Estudos</a>
+      </div>
+      <div class="topbar-actions">
+        <!-- Lang switcher -->
+        <div class="lang-switcher">
+          <button class="lang-btn" data-lang="pt" aria-label="Português">PT</button>
+          <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+          <button class="lang-btn" data-lang="es" aria-label="Español">ES</button>
+        </div>
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/fernandojorge/" target="_blank" rel="noopener"
+          class="topbar-icon-btn" aria-label="LinkedIn do autor" title="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <!-- Dark mode -->
+        <button id="darkToggle" class="dark-toggle" aria-label="Alternar modo escuro">
+          <i class="fas fa-moon"></i>
+        </button>
+        <!-- Reset -->
+        <button id="resetProgressBtn" class="btn-danger">
+          <i class="fas fa-rotate-left"></i> <span data-i18n="topbar.reset">Resetar</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <div class="page-inner tabs-inner">
+      <button data-view="inicio"   class="tab active"><i class="fas fa-house"></i>              <span data-i18n="tabs.inicio">Início</span></button>
+      <button data-view="licoes"   class="tab">       <i class="fas fa-book-open"></i>           <span data-i18n="tabs.licoes">Lições</span></button>
+      <button data-view="quiz"     class="tab">       <i class="fas fa-bolt"></i>                <span data-i18n="tabs.quiz">Quiz</span></button>
+      <button data-view="simulado" class="tab">       <i class="fas fa-stopwatch"></i>           <span data-i18n="tabs.simulado">Simulado</span></button>
+      <button data-view="historico"class="tab">       <i class="fas fa-clock-rotate-left"></i>   <span data-i18n="tabs.historico">Histórico</span></button>
+    </div>
+  </nav>
+
+  <main id="app"></main>
+
+  <!-- marked.js for markdown rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+  <script src="i18n.js"></script>
+  <script src="content.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
