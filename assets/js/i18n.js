@@ -231,6 +231,13 @@
     topbar: { subtitle:'Plataforma de Estudos', reset:'Resetar', home:'Início' },
     inicio: {
       metrics: { lessons:'Lições', attempts:'Tentativas', avg:'Média Geral', questions:'Questões' },
+      welcome: {
+        title: 'Aprenda no seu próprio ritmo',
+        titleDesktop: 'Aprenda<br>No seu<br>Próprio ritmo',
+        titleMobile: 'Aprenda no seu próprio ritmo',
+        p1: 'Este é o seu <strong>espaço de aprendizado</strong>, foi pensado para você estudar no seu ritmo, sem pressa e sem cobrança. Aqui acertar ou errar, não importa muito, o que importa é <strong>aprender e evoluir</strong>.',
+        p2: 'Escolha uma <strong>Lição</strong> que chame sua atenção, experimente o <strong>Quiz</strong> para testar o que aprendeu e quando se sentir confiante, encare o <strong>Simulado</strong>. Cada tentativa é uma chance de se conhecer melhor e aumentar o seu conhecimento em <strong>IA Aplicada</strong>.'
+      },
       title: 'Progresso Rápido',
       noAttempts: 'Nenhuma tentativa ainda. Comece pelo Quiz!',
       lastAttempt: 'Última tentativa',
@@ -503,6 +510,13 @@
     topbar: { subtitle:'Study Platform', reset:'Reset', home:'Home' },
     inicio: {
       metrics: { lessons:'Lessons', attempts:'Attempts', avg:'Avg Score', questions:'Questions' },
+      welcome: {
+        title: 'Learn at your own pace',
+        titleDesktop: 'Learn<br>At your<br>Own pace',
+        titleMobile: 'Learn at your own pace',
+        p1: 'This is your <strong>learning space</strong>, designed for you to study at your own pace, with no rush and no pressure. Here, getting it right or wrong does not matter much; what matters is to <strong>learn and grow</strong>.',
+        p2: 'Pick a <strong>Lesson</strong> that catches your eye, try the <strong>Quiz</strong> to check what you learned, and when you feel confident, take on the <strong>Mock Exam</strong>. Every attempt is a chance to know yourself better and deepen your knowledge of <strong>Applied AI</strong>.'
+      },
       title: 'Quick Progress',
       noAttempts: 'No attempts yet. Start with the Quiz!',
       lastAttempt: 'Last attempt',
@@ -775,6 +789,13 @@
     topbar: { subtitle:'Plataforma de Estudios', reset:'Resetear', home:'Inicio' },
     inicio: {
       metrics: { lessons:'Lecciones', attempts:'Intentos', avg:'Promedio', questions:'Preguntas' },
+      welcome: {
+        title: 'Aprende a tu propio ritmo',
+        titleDesktop: 'Aprende<br>A tu<br>Propio ritmo',
+        titleMobile: 'Aprende a tu propio ritmo',
+        p1: 'Este es tu <strong>espacio de aprendizaje</strong>, pensado para que estudies a tu ritmo, sin prisa y sin presión. Aquí acertar o equivocarse no importa mucho; lo que importa es <strong>aprender y evolucionar</strong>.',
+        p2: 'Elige una <strong>Lección</strong> que te llame la atención, prueba el <strong>Quiz</strong> para verificar lo aprendido y, cuando te sientas listo, enfrenta el <strong>Simulacro</strong>. Cada intento es una oportunidad para conocerte mejor y ampliar tu conocimiento en <strong>IA Aplicada</strong>.'
+      },
       title: 'Progreso Rápido',
       noAttempts: '¡Sin intentos aún. Comienza con el Quiz!',
       lastAttempt: 'Último intento',

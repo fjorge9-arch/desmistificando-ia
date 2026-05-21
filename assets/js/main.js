@@ -9,10 +9,10 @@
   if (saved === 'dark' || (!saved && prefersDark)) root.classList.add('dark');
 
   function syncIcon() {
-    // A Plataforma usa <i class="fas fa-moon"> dentro do botão e troca para fa-sun no dark.
+    // A Plataforma usa Font Awesome 6 (<i class="fa-solid fa-moon">) e troca para sol no dark.
     // O Guia não tem ícone — neste caso syncIcon é no-op.
     const icon = document.querySelector('#darkToggle i');
-    if (icon) icon.className = root.classList.contains('dark') ? 'fas fa-sun' : 'fas fa-moon';
+    if (icon) icon.className = root.classList.contains('dark') ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
   }
   syncIcon();
 

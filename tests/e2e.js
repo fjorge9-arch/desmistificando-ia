@@ -25,10 +25,127 @@ const results = {
   lessons: { passed: [], failed: [] },
   tabs: {},
   i18n: {},
+  hero: { guide: null, plataforma: null },
   consoleErrors: [],
   networkErrors: [],
   pageErrors: [],
 };
+
+const OUT_DIR = path.join(__dirname, 'out');
+fs.mkdirSync(OUT_DIR, { recursive: true });
+
+/**
+ * Mede o hero (banner roxo) da página atual.
+ *  - kind === 'guide'      → <header.shadow-lg> do Guia (Tailwind)
+ *  - kind === 'plataforma' → <header.topbar> + <section.topbar-hero>
+ */
+async function measureHero(page, kind) {
+  return await page.evaluate((kind) => {
+    const round = (n) => Math.round(n * 10) / 10;
+    const rect = (el) => {
+      if (!el) return null;
+      const r = el.getBoundingClientRect();
+      const cs = getComputedStyle(el);
+      return {
+        x: round(r.x), y: round(r.y), w: round(r.width), h: round(r.height),
+        top: round(r.top), bottom: round(r.bottom),
+        paddingTop: cs.paddingTop, paddingBottom: cs.paddingBottom,
+        paddingLeft: cs.paddingLeft, paddingRight: cs.paddingRight,
+        fontSize: cs.fontSize, lineHeight: cs.lineHeight,
+        fontWeight: cs.fontWeight, color: cs.color,
+        background: cs.backgroundColor,
+        gap: cs.gap || cs.rowGap || cs.columnGap,
+      };
+    };
+    let hero, title, paragraphs, topbar;
+    if (kind === 'guide') {
+      hero = document.querySelector('header.shadow-lg');
+      title = hero?.querySelector('h1.hero-title-desktop') || hero?.querySelector('h1');
+      paragraphs = [...(hero?.querySelectorAll('p') || [])];
+      topbar = document.querySelector('.fixed.top-4');
+    } else {
+      topbar = document.querySelector('header.topbar');
+      hero = document.querySelector('section.topbar-hero');
+      title = hero?.querySelector('.topbar-hero-title-desktop');
+      paragraphs = [...(hero?.querySelectorAll('.topbar-hero-text') || [])];
+    }
+    const titleR = rect(title);
+    const pRects = paragraphs.map(rect);
+    const gaps = [];
+    for (let i = 1; i < pRects.length; i++) gaps.push(round(pRects[i].top - pRects[i - 1].bottom));
+    let nextSibling = null;
+    if (hero?.nextElementSibling) {
+      const ns = hero.nextElementSibling;
+      const nr = ns.getBoundingClientRect();
+      nextSibling = {
+        tag: ns.tagName.toLowerCase(),
+        cls: (ns.className || '').toString().split(' ')[0] || '',
+        gap: round(nr.top - hero.getBoundingClientRect().bottom),
+      };
+    }
+    return {
+      viewport: { w: window.innerWidth, h: window.innerHeight },
+      topbar: rect(topbar),
+      hero: rect(hero),
+      title: titleR,
+      paragraphs: pRects,
+      gapsBetweenParagraphs: gaps,
+      titleToFirstParagraphTopDelta: titleR && pRects[0] ? round(pRects[0].top - titleR.top) : null,
+      heroToNextSibling: nextSibling,
+    };
+  }, kind);
+}
+
+function writeHeroReport() {
+  const g = results.hero.guide;
+  const p = results.hero.plataforma;
+  if (!g || !p) return;
+  const fmt = (v) => (v === null || v === undefined) ? '—' : v;
+  const lines = [];
+  lines.push(`# Hero layout report`);
+  lines.push(``);
+  lines.push(`- Base: ${BASE}`);
+  lines.push(`- Viewport: ${g.viewport.w}×${g.viewport.h}`);
+  lines.push(``);
+  lines.push(`## Bloco roxo (hero)`);
+  lines.push(`| metric | Guia | Plataforma | delta |`);
+  lines.push(`|---|---|---|---|`);
+  const dh = p.hero.h - g.hero.h;
+  lines.push(`| hero height | ${g.hero.h}px | ${p.hero.h}px | ${dh > 0 ? '+' : ''}${dh}px |`);
+  lines.push(`| hero padding-top | ${g.hero.paddingTop} | ${p.hero.paddingTop} | |`);
+  lines.push(`| hero padding-bottom | ${g.hero.paddingBottom} | ${p.hero.paddingBottom} | |`);
+  lines.push(`| topbar height (acima) | ${fmt(g.topbar?.h)}px | ${fmt(p.topbar?.h)}px | |`);
+  lines.push(``);
+  lines.push(`## Título`);
+  lines.push(`| metric | Guia | Plataforma |`);
+  lines.push(`|---|---|---|`);
+  lines.push(`| font-size | ${g.title?.fontSize} | ${p.title?.fontSize} |`);
+  lines.push(`| line-height | ${g.title?.lineHeight} | ${p.title?.lineHeight} |`);
+  lines.push(`| font-weight | ${g.title?.fontWeight} | ${p.title?.fontWeight} |`);
+  lines.push(`| largura coluna | ${g.title?.w}px | ${p.title?.w}px |`);
+  lines.push(`| altura | ${g.title?.h}px | ${p.title?.h}px |`);
+  lines.push(`| top (y) | ${g.title?.top}px | ${p.title?.top}px |`);
+  lines.push(``);
+  lines.push(`## Parágrafos`);
+  lines.push(`| metric | Guia | Plataforma |`);
+  lines.push(`|---|---|---|`);
+  lines.push(`| count | ${g.paragraphs.length} | ${p.paragraphs.length} |`);
+  lines.push(`| font-size | ${g.paragraphs[0]?.fontSize} | ${p.paragraphs[0]?.fontSize} |`);
+  lines.push(`| line-height | ${g.paragraphs[0]?.lineHeight} | ${p.paragraphs[0]?.lineHeight} |`);
+  lines.push(`| font-weight | ${g.paragraphs[0]?.fontWeight} | ${p.paragraphs[0]?.fontWeight} |`);
+  lines.push(`| gap entre parágrafos | ${fmt(g.gapsBetweenParagraphs[0])}px | ${fmt(p.gapsBetweenParagraphs[0])}px |`);
+  lines.push(`| título → 1º p (top delta) | ${fmt(g.titleToFirstParagraphTopDelta)}px | ${fmt(p.titleToFirstParagraphTopDelta)}px |`);
+  lines.push(``);
+  lines.push(`## Hero → próximo elemento`);
+  lines.push(`| | Guia | Plataforma |`);
+  lines.push(`|---|---|---|`);
+  lines.push(`| próximo | ${fmt(g.heroToNextSibling?.tag)}.${fmt(g.heroToNextSibling?.cls)} | ${fmt(p.heroToNextSibling?.tag)}.${fmt(p.heroToNextSibling?.cls)} |`);
+  lines.push(`| gap | ${fmt(g.heroToNextSibling?.gap)}px | ${fmt(p.heroToNextSibling?.gap)}px |`);
+  const md = lines.join('\n');
+  fs.writeFileSync(path.join(OUT_DIR, 'hero-report.md'), md);
+  fs.writeFileSync(path.join(OUT_DIR, 'hero-report.json'), JSON.stringify(results.hero, null, 2));
+  console.log('\n' + md);
+}
 
 function rec(label, ok, extra) {
   const icon = ok ? '✓' : '✗';
@@ -37,7 +154,7 @@ function rec(label, ok, extra) {
 
 (async () => {
   const browser = await chromium.launch({ headless: HEADLESS });
-  const ctx = await browser.newContext({ locale: 'pt-BR' });
+  const ctx = await browser.newContext({ locale: 'pt-BR', viewport: { width: 1440, height: 900 } });
   const page = await ctx.newPage();
 
   // Capture console + network + page errors
@@ -65,6 +182,17 @@ function rec(label, ok, extra) {
     rec('GET /', resp.ok(), `HTTP ${resp.status()}`);
     const title = await page.title();
     rec('has <title>', !!title, JSON.stringify(title));
+    // Hero measurement + screenshots (Guia)
+    try {
+      await page.waitForSelector('header.shadow-lg', { timeout: 5000 });
+      await page.waitForTimeout(250);
+      results.hero.guide = await measureHero(page, 'guide');
+      await page.locator('header.shadow-lg').first().screenshot({ path: path.join(OUT_DIR, 'hero-guide.png') });
+      await page.screenshot({ path: path.join(OUT_DIR, 'top-guide.png'), clip: { x: 0, y: 0, width: 1440, height: 460 } });
+      rec('hero medido (Guia)', true, `${results.hero.guide.hero.h}px alt.`);
+    } catch (e) {
+      rec('hero (Guia)', false, e.message);
+    }
   } catch (e) {
     rec('GET /', false, e.message);
     results.pages['/'] = { error: e.message };
@@ -81,6 +209,24 @@ function rec(label, ok, extra) {
     rec('nav.tabs presente', true);
     await page.waitForSelector('.tab[data-view="licoes"]', { timeout: 5000 });
     rec('aba Lições presente', true);
+    // Hero measurement + screenshots (Plataforma)
+    try {
+      await page.waitForSelector('section.topbar-hero', { timeout: 5000 });
+      await page.waitForTimeout(250);
+      results.hero.plataforma = await measureHero(page, 'plataforma');
+      const tb = await page.locator('header.topbar').boundingBox();
+      const hb = await page.locator('section.topbar-hero').boundingBox();
+      const totalH = (hb.y + hb.height) - tb.y;
+      await page.screenshot({
+        path: path.join(OUT_DIR, 'hero-plataforma.png'),
+        clip: { x: 0, y: tb.y, width: 1440, height: totalH },
+      });
+      await page.screenshot({ path: path.join(OUT_DIR, 'top-plataforma.png'), clip: { x: 0, y: 0, width: 1440, height: 460 } });
+      rec('hero medido (Plataforma)', true, `${results.hero.plataforma.hero.h}px alt.`);
+      writeHeroReport();
+    } catch (e) {
+      rec('hero (Plataforma)', false, e.message);
+    }
   } catch (e) {
     rec('GET /estudos/', false, e.message);
     results.pages['/estudos/'] = { error: e.message };

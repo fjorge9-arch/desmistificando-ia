@@ -247,16 +247,93 @@ body {
   position: sticky;
   top: 0;
   z-index: 20;
+  box-shadow: none;
 }
 .dark .topbar { background: #4c1d95; }
+
+/* Hero introdutório abaixo da topbar — espelha o hero do Guia
+   (max-w-7xl px-6 py-16 md:flex md:gap-10 / md:w-64 / text-[40px] /
+    text-xl text-indigo-100 font-light leading-relaxed / gap-8).
+   Como a topbar (sticky) já é roxa, o conjunto topbar + hero forma
+   um único bloco contínuo — por isso o padding-top é menor que o do
+   Guia para compensar a altura da topbar logo acima. */
+.topbar-hero {
+  background: #6d28d9;
+  color: #ffffff;
+  border-bottom: none;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1);
+}
+.dark .topbar-hero { background: #4c1d95; }
+.topbar-hero-inner {
+  padding-top: 32px;
+  padding-bottom: 64px;  /* py-16 inferior, igual ao Guia */
+  display: flex;
+  gap: 40px;             /* gap-10 */
+  align-items: flex-start; /* topo, igual ao Guia (md:flex sem items-*) */
+}
+.topbar-hero-title-col {
+  width: 256px;        /* md:w-64 */
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 4px;    /* pt-1 */
+}
+.topbar-hero-text-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 32px;           /* gap-8 */
+  padding-top: 6px;    /* alinha 1º parágrafo +2px abaixo do título (igual ao Guia) */
+}
+.topbar-hero-title {
+  margin: 0;
+  font-size: 40px;     /* text-[40px] */
+  font-weight: 700;    /* font-bold */
+  line-height: 1.25;   /* match Guia: 50px / 40px */
+  letter-spacing: -.01em;
+  color: #ffffff;
+}
+.topbar-hero-title-mobile { display: none; }
+.topbar-hero-text {
+  margin: 0;
+  font-size: 1.25rem;  /* text-xl = 20px */
+  line-height: 1.4;    /* match Guia: 28px / 20px */
+  color: #e0e7ff;      /* indigo-100 */
+  font-weight: 300;    /* font-light */
+}
+.topbar-hero-text strong { color: #ffffff; font-weight: 600; }
+@media (max-width: 768px) {
+  .topbar-hero-inner {
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .topbar-hero-title-col {
+    width: auto;
+    padding-top: 0;
+  }
+  .topbar-hero-title-desktop { display: none; }
+  .topbar-hero-title-mobile { display: block; }
+  .topbar-hero-title {
+    font-size: 1.875rem; /* text-3xl */
+    line-height: 1.375;  /* leading-snug */
+  }
+  .topbar-hero-text {
+    font-size: 1.125rem; /* text-lg */
+  }
+  .topbar-hero-text-col { gap: 24px; }
+}
 
 .topbar-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 14px;
+  padding-bottom: 14px;
 }
 
 .topbar-brand {
@@ -277,57 +354,66 @@ body {
 }
 .topbar-brand-main i { opacity: .85; }
 .topbar-app-label {
-  font-size: .72rem;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .875rem;
   font-weight: 600;
   color: #6d28d9;
   background: #ffffff;
-  padding: 3px 10px;
+  padding: 0 16px;
   border: 1px solid rgba(203,213,225,.6);
   border-radius: 999px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.12);
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1);
   letter-spacing: 0;
   text-decoration: none;
-  transition: box-shadow .15s;
+  transition: background .15s, box-shadow .15s;
 }
 .topbar-app-label:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,.18);
+  background: #f8fafc;
   color: #5b21b6;
+}
+.dark .topbar-app-label {
+  background: #1e293b;
+  color: #c4b5fd;
+  border-color: rgba(100,116,139,.5);
 }
 
 .topbar-actions {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
   flex-shrink: 0;
   flex-wrap: wrap;
 }
 
 .topbar-icon-btn {
-  width: 36px; height: 36px;
+  width: 44px; height: 44px;
   background: #ffffff;
   border: 1px solid rgba(203,213,225,.6);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   color: #0a66c2;
   text-decoration: none;
-  font-size: .85rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,.12);
+  font-size: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1);
   transition: background .15s;
 }
 .topbar-icon-btn:hover { background: #f1f5f9; }
 .dark .topbar-icon-btn { background: #1e293b; color: #70b5f9; border-color: rgba(100,116,139,.5); }
 
 .dark-toggle {
-  width: 36px; height: 36px;
+  width: 44px; height: 44px;
   background: #ffffff;
   border: 1px solid rgba(203,213,225,.6);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   color: #6d28d9;
   cursor: pointer;
-  font-size: .85rem;
+  font-size: 1rem;
   padding: 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,.12);
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1);
   transition: background .15s;
   font-family: inherit;
 }

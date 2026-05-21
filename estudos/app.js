@@ -471,6 +471,12 @@ function renderHistorico() {
   if (!attempts.length) {
     return `
       <section class="card">
+        <div class="section-header" style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px">
+          <h2 class="section-title" style="margin:0">${t('historico.title')}</h2>
+          <button id="resetProgressBtn">
+            <i class="fas fa-rotate-left"></i> ${t('topbar.reset')}
+          </button>
+        </div>
         <div class="empty-state">
           <i class="fas fa-chart-simple"></i>
           <p>${t('historico.noHistory')}</p>
@@ -535,7 +541,12 @@ function renderHistorico() {
       </div>
     </section>
     <section class="card">
-      <h2 class="section-title">${t('historico.title')}</h2>
+      <div class="section-header" style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px">
+        <h2 class="section-title" style="margin:0">${t('historico.title')}</h2>
+        <button id="resetProgressBtn">
+          <i class="fas fa-rotate-left"></i> ${t('topbar.reset')}
+        </button>
+      </div>
       ${rows}
     </section>`;
 }
@@ -626,6 +637,7 @@ function bindViewEvents() {
 
   if (state.view === "historico") {
     document.getElementById("goQuizBtn")?.addEventListener("click", () => setView("quiz"));
+    document.getElementById("resetProgressBtn")?.addEventListener("click", resetProgress);
   }
 }
 
@@ -633,6 +645,5 @@ function bindViewEvents() {
 document.querySelectorAll(".tab").forEach(btn =>
   btn.addEventListener("click", () => setView(btn.dataset.view))
 );
-document.getElementById("resetProgressBtn").addEventListener("click", resetProgress);
 
 render();

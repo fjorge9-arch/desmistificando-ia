@@ -24,18 +24,14 @@
   <header class="topbar">
     <div class="page-inner topbar-inner">
       <div class="topbar-brand">
-        <a href="../" class="topbar-brand-main">
-          <i class="fas fa-brain"></i> Desmistificando IA
-        </a>
-        <a href="./" class="topbar-app-label" data-i18n="topbar.subtitle">Plataforma de Estudos</a>
-      </div>
-      <div class="topbar-actions">
-        <!-- Lang switcher -->
+        <!-- Lang switcher (lado esquerdo) -->
         <div class="lang-switcher">
           <button class="lang-btn" data-lang="pt" aria-label="Português">PT</button>
           <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
           <button class="lang-btn" data-lang="es" aria-label="Español">ES</button>
         </div>
+      </div>
+      <div class="topbar-actions">
         <!-- LinkedIn -->
         <a href="https://www.linkedin.com/in/fernandojorge/" target="_blank" rel="noopener"
           class="topbar-icon-btn" aria-label="LinkedIn do autor" title="LinkedIn">
@@ -45,13 +41,26 @@
         <button id="darkToggle" class="dark-toggle" aria-label="Alternar modo escuro">
           <i class="fas fa-moon"></i>
         </button>
-        <!-- Reset -->
-        <button id="resetProgressBtn" class="btn-danger">
-          <i class="fas fa-rotate-left"></i> <span data-i18n="topbar.reset">Resetar</span>
-        </button>
+        <!-- Link para o Guia (Desmistificando IA) -->
+        <a href="../" class="topbar-app-label" aria-label="Desmistificando IA" title="Desmistificando IA">
+          <i class="fas fa-brain"></i> Desmistificando IA
+        </a>
       </div>
     </div>
   </header>
+
+  <section class="topbar-hero">
+    <div class="page-inner topbar-hero-inner">
+      <div class="topbar-hero-title-col">
+        <h1 class="topbar-hero-title topbar-hero-title-desktop" data-i18n-html="inicio.welcome.titleDesktop">Uma<br>plataforma para<br>aprender no<br>seu ritmo</h1>
+        <h1 class="topbar-hero-title topbar-hero-title-mobile" data-i18n="inicio.welcome.titleMobile">Uma plataforma para aprender no seu ritmo</h1>
+      </div>
+      <div class="topbar-hero-text-col">
+        <p class="topbar-hero-text" data-i18n-html="inicio.welcome.p1">Este é o seu <strong>espaço de aprendizado</strong>, foi pensado para você estudar no seu ritmo, sem pressa e sem cobrança. Aqui acertar ou errar, não importa muito, o que importa é <strong>aprender e evoluir</strong>.</p>
+        <p class="topbar-hero-text" data-i18n-html="inicio.welcome.p2">Escolha uma <strong>Lição</strong> que chame sua atenção, experimente o <strong>Quiz</strong> para testar o que aprendeu e quando se sentir confiante, encare o <strong>Simulado</strong>. Cada tentativa é uma chance de se conhecer melhor e aumentar o seu conhecimento em <strong>IA Aplicada</strong>.</p>
+      </div>
+    </div>
+  </section>
 
   <nav class="tabs">
     <div class="page-inner tabs-inner">
