@@ -23,6 +23,23 @@
   --shadow:         0 1px 3px rgba(0,0,0,.06);
   --radius:         20px;
   --radius-lg:      28px;
+  --radius-sm:       8px;
+  --radius-md:      10px;
+  --radius-card:    12px;
+
+  --text-xs:   0.72rem;
+  --text-sm:   0.8125rem;
+  --text-body: 0.875rem;
+  --text-md:   0.95rem;
+  --text-lg:   1rem;
+  --text-xl:   1.1rem;
+  --text-2xl:  1.25rem;
+
+  --gap-xs:  4px;
+  --gap-sm:  8px;
+  --gap-md: 12px;
+  --gap-lg: 16px;
+  --gap-xl: 24px;
 }
 
 .dark {
@@ -168,6 +185,7 @@ body {
 .copy-btn:hover { background: rgba(139,92,246,0.3); }
 .dark .copy-btn { background: rgba(139,92,246,0.2); color: #ddd6fe; border-color: rgba(196,181,253,0.4); }
 .copy-btn.copied { background: #16a34a; color: white; border-color: #16a34a; }
+.copy-btn--abs { position: absolute; top: 0.75rem; right: 0.75rem; }
 
 .hero-title-desktop { white-space: nowrap; }
 
@@ -239,6 +257,32 @@ body {
   padding-right: 24px;
 }
 
+/* Lang-switcher adaptado para topbar roxa */
+.topbar .lang-switcher {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.25);
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.topbar .lang-btn { color: rgba(255,255,255,0.85); }
+.topbar .lang-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
+.topbar .lang-btn.active {
+  background: rgba(255,255,255,0.95);
+  color: #6d28d9;
+  border-color: transparent;
+  box-shadow: none;
+}
+.dark .topbar .lang-switcher {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.18);
+}
+.dark .topbar .lang-btn { color: rgba(255,255,255,0.75); }
+.dark .topbar .lang-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
+.dark .topbar .lang-btn.active {
+  background: rgba(255,255,255,0.88);
+  color: #4c1d95;
+}
+
 /* Topbar */
 .topbar {
   background: #6d28d9;
@@ -265,7 +309,7 @@ body {
 }
 .dark .topbar-hero { background: #4c1d95; }
 .topbar-hero-inner {
-  padding-top: 32px;
+  padding-top: 48px;
   padding-bottom: 64px;  /* py-16 inferior, igual ao Guia */
   display: flex;
   gap: 40px;             /* gap-10 */
@@ -424,10 +468,10 @@ body {
   background: transparent;
   border: 1px solid rgba(255,255,255,.35);
   color: rgba(255,255,255,.85);
-  padding: 5px 12px;
-  border-radius: 8px;
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  font-size: .78rem;
+  font-size: var(--text-sm);
   font-family: inherit;
   transition: all .15s;
   white-space: nowrap;
@@ -526,7 +570,8 @@ body {
 /* Section title */
 .section-title {
   margin: 0 0 14px;
-  font-size: .95rem; font-weight: 600;
+  font-size: var(--text-md); font-weight: 700;
+  color: var(--text);
 }
 
 /* Controls */
@@ -595,7 +640,7 @@ input[type="text"]:focus, select:focus {
   .lessons-layout { grid-template-columns: 1fr; }
 }
 
-.lessons-sidebar { padding: 16px; }
+.lessons-sidebar { padding: 20px; }
 
 .lesson-list {
   max-height: 560px;
@@ -604,14 +649,14 @@ input[type="text"]:focus, select:focus {
   border-radius: 10px;
 }
 .lesson-item {
-  padding: 10px 12px;
+  padding: 10px 12px 10px 15px;
   border-bottom: 1px solid var(--border);
   cursor: pointer; font-size: .875rem;
   transition: background .1s;
 }
 .lesson-item:last-child { border-bottom: none; }
 .lesson-item:hover { background: var(--primary-soft); }
-.lesson-item.active { background: var(--primary-soft); border-left: 3px solid var(--primary); }
+.lesson-item.active { background: var(--primary-soft); padding-left: 12px; border-left: 3px solid var(--primary); }
 
 .lesson-item-row {
   display: flex; align-items: center; justify-content: space-between; gap: 8px;
@@ -653,7 +698,7 @@ input[type="text"]:focus, select:focus {
 
 /* Lesson markdown content */
 .lesson-prose {
-  padding: 24px 28px;
+  padding: 24px;
   max-height: calc(100vh - 280px);
   overflow: auto;
 }
@@ -869,7 +914,7 @@ input[type="text"]:focus, select:focus {
 .stat-label { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
 
 .history-item {
-  border: 1px solid var(--border); border-radius: 12px;
+  border: 1px solid var(--border); border-radius: var(--radius-card);
   padding: 14px 16px; margin-bottom: 8px;
   background: var(--surface); font-size: .875rem;
   transition: box-shadow .2s;

@@ -30,6 +30,11 @@
           <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
           <button class="lang-btn" data-lang="es" aria-label="Español">ES</button>
         </div>
+        <!-- Brand -->
+        <a href="../" class="topbar-brand-main" aria-label="Desmistificando IA" title="Desmistificando IA">
+          <i class="fas fa-brain"></i>
+          <span>Desmistificando IA</span>
+        </a>
       </div>
       <div class="topbar-actions">
         <!-- LinkedIn -->
@@ -41,10 +46,6 @@
         <button id="darkToggle" class="dark-toggle" aria-label="Alternar modo escuro">
           <i class="fas fa-moon"></i>
         </button>
-        <!-- Link para o Guia (Desmistificando IA) -->
-        <a href="../" class="topbar-app-label" aria-label="Desmistificando IA" title="Desmistificando IA">
-          <i class="fas fa-brain"></i> Desmistificando IA
-        </a>
       </div>
     </div>
   </header>
@@ -73,6 +74,15 @@
   </nav>
 
   <main id="app"></main>
+
+  <!-- Back to top -->
+  <div class="fixed bottom-6 inset-x-0 z-40" style="pointer-events:none">
+    <div style="max-width:1280px;margin:0 auto;padding:0 24px;display:flex;justify-content:flex-end">
+      <button id="backToTop" class="dark-toggle" style="pointer-events:auto;background:var(--primary);color:#fff;border-color:var(--primary);width:48px;height:48px;border-radius:50%" aria-label="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+      </button>
+    </div>
+  </div>
 
   <!-- marked.js for markdown rendering -->
   <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
