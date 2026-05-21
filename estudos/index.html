@@ -21,34 +21,31 @@
 </head>
 <body>
 
-  <header class="topbar">
-    <div class="page-inner topbar-inner">
-      <div class="topbar-brand">
-        <!-- Lang switcher (lado esquerdo) -->
-        <div class="lang-switcher">
-          <button class="lang-btn" data-lang="pt" aria-label="Português">PT</button>
-          <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
-          <button class="lang-btn" data-lang="es" aria-label="Español">ES</button>
-        </div>
-        <!-- Brand -->
-        <a href="../" class="topbar-brand-main" aria-label="Desmistificando IA" title="Desmistificando IA">
-          <i class="fas fa-brain"></i>
-          <span>Desmistificando IA</span>
-        </a>
+  <!-- Header flutuante — espelha o padrão do Guia -->
+  <div class="floating-header">
+    <div class="page-inner floating-header-inner">
+      <!-- Lang switcher (esquerda) -->
+      <div class="lang-switcher">
+        <button class="lang-btn" data-lang="pt" aria-label="Português">PT</button>
+        <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+        <button class="lang-btn" data-lang="es" aria-label="Español">ES</button>
       </div>
-      <div class="topbar-actions">
-        <!-- LinkedIn -->
+      <!-- Ações (direita) -->
+      <div class="floating-header-actions">
         <a href="https://www.linkedin.com/in/fernandojorge/" target="_blank" rel="noopener"
           class="topbar-icon-btn" aria-label="LinkedIn do autor" title="LinkedIn">
           <i class="fab fa-linkedin-in"></i>
         </a>
-        <!-- Dark mode -->
         <button id="darkToggle" class="dark-toggle" aria-label="Alternar modo escuro">
           <i class="fas fa-moon"></i>
         </button>
+        <a href="../" class="topbar-app-label" aria-label="Desmistificando IA" title="Desmistificando IA">
+          <i class="fas fa-brain"></i>
+          <span>Desmistificando IA</span>
+        </a>
       </div>
     </div>
-  </header>
+  </div>
 
   <section class="topbar-hero">
     <div class="page-inner topbar-hero-inner">
@@ -76,9 +73,9 @@
   <main id="app"></main>
 
   <!-- Back to top -->
-  <div class="fixed bottom-6 inset-x-0 z-40" style="pointer-events:none">
+  <div style="position:fixed;bottom:24px;left:0;right:0;z-index:40;pointer-events:none">
     <div style="max-width:1280px;margin:0 auto;padding:0 24px;display:flex;justify-content:flex-end">
-      <button id="backToTop" class="dark-toggle" style="pointer-events:auto;background:var(--primary);color:#fff;border-color:var(--primary);width:48px;height:48px;border-radius:50%" aria-label="Voltar ao topo">
+      <button id="backToTop" class="btn-back-top" aria-label="Voltar ao topo">
         <i class="fas fa-arrow-up"></i>
       </button>
     </div>

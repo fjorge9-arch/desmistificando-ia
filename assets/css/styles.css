@@ -257,30 +257,27 @@ body {
   padding-right: 24px;
 }
 
-/* Lang-switcher adaptado para topbar roxa */
-.topbar .lang-switcher {
-  background: rgba(255,255,255,0.12);
-  border-color: rgba(255,255,255,0.25);
-  box-shadow: none;
-  backdrop-filter: none;
+/* Header flutuante da Plataforma — espelha o padrão do Guia */
+.floating-header {
+  position: fixed;
+  top: 16px;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  pointer-events: none;
 }
-.topbar .lang-btn { color: rgba(255,255,255,0.85); }
-.topbar .lang-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
-.topbar .lang-btn.active {
-  background: rgba(255,255,255,0.95);
-  color: #6d28d9;
-  border-color: transparent;
-  box-shadow: none;
+.floating-header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
 }
-.dark .topbar .lang-switcher {
-  background: rgba(255,255,255,0.08);
-  border-color: rgba(255,255,255,0.18);
-}
-.dark .topbar .lang-btn { color: rgba(255,255,255,0.75); }
-.dark .topbar .lang-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
-.dark .topbar .lang-btn.active {
-  background: rgba(255,255,255,0.88);
-  color: #4c1d95;
+.floating-header .lang-switcher { pointer-events: auto; }
+.floating-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: auto;
 }
 
 /* Topbar */
@@ -309,8 +306,8 @@ body {
 }
 .dark .topbar-hero { background: #4c1d95; }
 .topbar-hero-inner {
-  padding-top: 48px;
-  padding-bottom: 64px;  /* py-16 inferior, igual ao Guia */
+  padding-top: 80px;     /* compensa header flutuante ~60px + margem */
+  padding-bottom: 64px;
   display: flex;
   gap: 40px;             /* gap-10 */
   align-items: flex-start; /* topo, igual ao Guia (md:flex sem items-*) */
@@ -482,7 +479,7 @@ body {
 .tabs {
   border-bottom: none;
   background: #6d28d9;
-  position: sticky; top: 52px; z-index: 10;
+  position: sticky; top: 0; z-index: 10;
 }
 .dark .tabs { background: #4c1d95; }
 
@@ -931,6 +928,23 @@ input[type="text"]:focus, select:focus {
 .history-percent { font-size: 1.2rem; font-weight: 700; color: var(--primary); }
 .history-fraction { font-size: .8rem; color: var(--muted); }
 
+/* Back to top button — Plataforma */
+.btn-back-top {
+  width: 48px; height: 48px;
+  background: var(--primary);
+  color: #fff;
+  border: 1px solid var(--primary);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,.18);
+  transition: background .15s;
+  font-family: inherit;
+  pointer-events: auto;
+}
+.btn-back-top:hover { background: var(--primary-hover); border-color: var(--primary-hover); }
+
 /* Empty state */
 .empty-state {
   text-align: center; padding: 40px 20px;
@@ -943,8 +957,9 @@ input[type="text"]:focus, select:focus {
 @media (max-width: 700px) {
   .page-inner { padding-left: 14px; padding-right: 14px; }
   .topbar-inner { gap: 8px; }
-  .topbar-app-label { display: none; }
+  .topbar-app-label span { display: none; }
   .topbar-actions { gap: 5px; }
+  .floating-header-actions { gap: 5px; }
   #app { padding: 14px 14px 60px; }
   .tabs-inner { padding-top: 8px; padding-bottom: 8px; }
   .tab span { display: none; }
